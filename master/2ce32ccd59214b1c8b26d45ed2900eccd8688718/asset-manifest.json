@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/alfa-laboratory/core-components/main.58720e38a1383df78ffc.bundle.js",
+    "main.js.map": "/alfa-laboratory/core-components/main.58720e38a1383df78ffc.bundle.js.map",
+    "runtime~main.js": "/alfa-laboratory/core-components/runtime~main.58720e38a1383df78ffc.bundle.js",
+    "runtime~main.js.map": "/alfa-laboratory/core-components/runtime~main.58720e38a1383df78ffc.bundle.js.map",
+    "vendors~main.js": "/alfa-laboratory/core-components/vendors~main.58720e38a1383df78ffc.bundle.js",
+    "vendors~main.js.map": "/alfa-laboratory/core-components/vendors~main.58720e38a1383df78ffc.bundle.js.map",
+    "iframe.html": "/alfa-laboratory/core-components/iframe.html",
+    "precache-manifest.4d5fc0288637159cd1e982f28d1e51c9.js": "/alfa-laboratory/core-components/precache-manifest.4d5fc0288637159cd1e982f28d1e51c9.js",
+    "service-worker.js": "/alfa-laboratory/core-components/service-worker.js",
+    "vendors~main.58720e38a1383df78ffc.bundle.js.LICENSE.txt": "/alfa-laboratory/core-components/vendors~main.58720e38a1383df78ffc.bundle.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "runtime~main.58720e38a1383df78ffc.bundle.js",
+    "vendors~main.58720e38a1383df78ffc.bundle.js",
+    "main.58720e38a1383df78ffc.bundle.js"
+  ]
+}
