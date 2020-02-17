@@ -12,14 +12,12 @@ const defaultConfig = {
 };
 /** dir for merged storybook file */
 const ghMergeDir = 'storybook-demo';
-/** Temporary dir for builded file */
-let tempOutputDir;
 /** Custom option for shell.exec */
 const execOptions = {
     silent: true
 };
-/** Last commit hash from git */
-const getLastCommitHash = shell.exec('git rev-parse HEAD', execOptions);
+/** Temporary dir for builded file = last git commit hash */
+const tempOutputDir = shell.exec('git rev-parse HEAD', execOptions).stdout;
 /** Current git branch */
 const sourceBranch = shell.exec('git rev-parse --abbrev-ref HEAD', execOptions).stdout.trim();
 /** Git remote url */
@@ -27,16 +25,8 @@ const gitUrl = shell.exec(
     `git config --get remote.${defaultConfig.gitRemote}.url`,
     execOptions
 ).stdout.trim();
+/** Parseg git url */
 const parsedGitUrl = parseGitUrl(gitUrl);
-
-if (getLastCommitHash.stdout) {
-    tempOutputDir = getLastCommitHash.stdout;
-} else {
-    throw new Error(
-        `Exec code(${getLastCommitHash.code}) on executing: git rev-parse HEAD\n
-        ${getLastCommitHash.stderr}`
-    );
-}
 
 console.log('Publish storybook demo for github');
 console.log('=> Build storybook');
