@@ -2,7 +2,7 @@ module.exports = {
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-knobs',
-    '@storybook/preset-typescript',
     'storybook-addon-designs',
+    '@storybook/preset-create-react-app',
   ],
 };
