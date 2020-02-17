@@ -13,8 +13,7 @@
   "scripts": {
     "build": "./bin/build.sh",
     "start": "start-storybook -p 9009 -c .storybook",
-    "build-storybook": "build-storybook -o build",
-    "storybook:demo": "deploy-storybook -- --out=build",
+    "storybook:build-demo": "node ./demo/build.js",
     "update-colors": "node ./tools/update-colors.js",
     "pub": "./bin/publish.sh",
     "lint": "yarn lint:css && yarn lint:js",
@@ -72,6 +71,7 @@
     "eslint-plugin-react-hooks": "^2.3.0",
     "eslint-plugin-sort-class-members": "^1.6.0",
     "fork-ts-checker-webpack-plugin": "^4.0.2",
+    "git-url-parse": "^11.1.2",
     "husky": "^4.2.1",
     "lerna": "^3.20.2",
     "postcss-cli": "^7.1.0",

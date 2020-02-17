@@ -16,6 +16,13 @@ module.exports = {
         rules: {
             'import/no-extraneous-dependencies': 0,
             'react/prop-types': 'off',
+            "chai-friendly/no-unused-expressions": [
+                "error",
+                {
+                    "allowShortCircuit": true,
+                    "allowTernary": true
+                }
+            ],
         }
     }]
 };
