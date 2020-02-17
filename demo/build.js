@@ -5,7 +5,7 @@ const parseGitUrl = require('git-url-parse');
 /** Config for github */
 const defaultConfig = {
     gitUsername: 'GH Pages Bot',
-    gitEmail: 'hello@ghbot.com',
+    gitEmail: 'gh-bot@alfabank.ru',
     commitMessage: 'Deploy Storybook to GitHub Pages',
     gitRemote: 'origin',
     targetBranch: 'gh-pages'
@@ -21,7 +21,7 @@ const execOptions = {
 /** Last commit hash from git */
 const getLastCommitHash = shell.exec('git rev-parse HEAD', execOptions);
 /** Current git branch */
-const sourceBranch = shell.exec('git rev-parse --abbrev-ref HEAD', execOptions).stdout;
+const sourceBranch = shell.exec('git rev-parse --abbrev-ref HEAD', execOptions).stdout.trim();
 /** Git remote url */
 const gitUrl = shell.exec(
     `git config --get remote.${defaultConfig.gitRemote}.url`,
@@ -60,8 +60,6 @@ shell.exec('git config commit.gpgsign false', execOptions);
 
 // // Pull gh-page file
 console.log('=> Pull storybook file');
-console.log(gitUrl);
-console.log(`git pull -f -q ${gitUrl} ${defaultConfig.targetBranch}`);
 shell.exec(`git pull -f -q ${gitUrl} ${defaultConfig.targetBranch}`, execOptions);
 
 // Merge builded storybook
@@ -82,9 +80,7 @@ shell.exec(`git commit -m "${defaultConfig.commitMessage}"`, execOptions);
 
 // Push changes to gh-pages
 console.log(`=> Push changes to ${defaultConfig.targetBranch}`);
-shell.exec(
-    `git push -q -f ${gitUrl} master:${defaultConfig.targetBranch}`
-);
+shell.exec(`git push -q -f ${gitUrl} master:${defaultConfig.targetBranch}`);
 
 // Cleanup temporary file
 shell.cd('..');
