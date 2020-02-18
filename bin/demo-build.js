@@ -55,11 +55,6 @@ shell.exec(`git pull -f -q ${gitUrl} ${defaultConfig.targetBranch}`, execOptions
 // Merge builded storybook
 console.log('=> Merge builded storybook');
 shell.cd('../');
-console.log('=============');
-shell.exec('ls');
-console.log('=============');
-console.log(`./${tempOutputDir}`, `./${ghMergeDir}`);
-console.log('=============');
 if (sourceBranch === 'master') {
     shell.cp('-rf', `./${tempOutputDir}`, `./${ghMergeDir}/master`);
 } else {
@@ -73,14 +68,7 @@ console.log(`=> Commit changes with message: ${defaultConfig.commitMessage}`);
 shell.exec('git add .', execOptions);
 shell.exec(`git commit -m "${defaultConfig.commitMessage}"`, execOptions);
 
-// // Push changes to gh-pages
-// console.log(`=> Push changes to ${defaultConfig.targetBranch}`);
-// shell.exec(`git push -q -f ${gitUrl} master:${defaultConfig.targetBranch}`);
-
-// // Cleanup temporary file
-// shell.cd('..');
-// // // shell.rm('-rf', ghMergeDir);
-// shell.rm('-rf', tempOutputDir);
+// log output url
 if (sourceBranch === 'master') {
     console.log(`=> Storybook deployed to: https://${parsedGitUrl.owner}.github.io/${parsedGitUrl.name}/master/`);
 } else {
