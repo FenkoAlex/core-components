@@ -18,7 +18,7 @@
     "pub": "./bin/publish.sh",
     "lint": "yarn lint:css && yarn lint:js",
     "lint:css": "stylelint ./packages/**/*.css",
-    "lint:js": "eslint ./ --ext .ts,.tsx,.js,.jsx",
+    "lint:js": "eslint ./ --ext .ts,.tsx,.js,.jsx"
   },
   "browserslist": {
     "production": [
