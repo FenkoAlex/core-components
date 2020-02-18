@@ -23,7 +23,7 @@ jobs:
     #     echo "${{ secrets.BOT_SSH_KEY }}" > id_rsa
     #     eval $(ssh-agent -s)
     #     ssh-add ./id_rsa
-    - name: run demo build
+    - name: Run build
       run: node ./bin/demo-build.js
     - name: Publish storybook
       run: |
