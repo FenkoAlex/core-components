@@ -25,7 +25,7 @@ jobs:
         ssh-add ./id_rsa
     - name: run demo build
       run: node ./bin/demo-build.js
-    -name: Publish storybook
+    - name: Publish storybook
       run: |
         cd ./storybook-demo
         git push "https://alfa-bot:${{ secrets.BOT_AUTH_TOKEN }}@github.com/core-components.git" gh-pages
