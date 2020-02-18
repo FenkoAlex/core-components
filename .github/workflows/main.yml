@@ -24,6 +24,8 @@ jobs:
         eval $(ssh-agent -s)
         ssh-add ./id_rsa
     - name: Echo ls
-      run: ls
+      run: |
+        cd ./bin
+        ls
     # - name: run demo build
     #   run: node ./bin/scripts/demo.js
