@@ -4,7 +4,7 @@ const parseGitUrl = require('git-url-parse');
 
 /** Config for github */
 const defaultConfig = {
-    gitUsername: 'alfabot',
+    gitUsername: 'alfa-bot',
     gitEmail: 'ds@alfabank.ru',
     commitMessage: 'Deploy Storybook to GitHub Pages',
     gitRemote: 'origin',
@@ -27,11 +27,11 @@ const gitUrl = shell.exec(
     execOptions
 ).stdout.trim();
 /** Parseg git url */
-const parsedGitUrl = parseGitUrl(gitUrl);
+// const parsedGitUrl = parseGitUrl(gitUrl);
 
 console.log('Publish storybook demo for github');
 console.log('=> Build storybook');
-shell.exec(`yarn build-storybook -o ${tempOutputDir}`, { fatal: true });
+// shell.exec(`yarn build-storybook -o ${tempOutputDir}`, { fatal: true });
 
 // Prepare temporary gh-pages dir
 console.log('=> Prepare temporary dir');
@@ -41,10 +41,6 @@ shell.mkdir(ghMergeDir);
 // Go to the temporary directory and create a *new* Git repo
 shell.cd(ghMergeDir);
 shell.exec('git init');
-console.log('===============');
-console.log(`git config user.name ${defaultConfig.gitUsername}`);
-console.log(`git config user.email ${defaultConfig.gitEmail}`);
-console.log('===============');
 // Inside this git repo we'll pretend to be a new user
 shell.exec(`git config user.name "${defaultConfig.gitUsername}"`);
 shell.exec(`git config user.email "${defaultConfig.gitEmail}"`);
@@ -72,16 +68,16 @@ console.log(`=> Commit changes with message: ${defaultConfig.commitMessage}`);
 shell.exec('git add .', execOptions);
 shell.exec(`git commit -m "${defaultConfig.commitMessage}"`, execOptions);
 
-// Push changes to gh-pages
-console.log(`=> Push changes to ${defaultConfig.targetBranch}`);
-shell.exec(`git push -q -f ${gitUrl} master:${defaultConfig.targetBranch}`);
+// // Push changes to gh-pages
+// console.log(`=> Push changes to ${defaultConfig.targetBranch}`);
+// shell.exec(`git push -q -f ${gitUrl} master:${defaultConfig.targetBranch}`);
 
-// Cleanup temporary file
-shell.cd('..');
-shell.rm('-rf', ghMergeDir);
-shell.rm('-rf', tempOutputDir);
-if (sourceBranch === 'master') {
-    console.log(`=> Storybook deployed to: https://${parsedGitUrl.owner}.github.io/${parsedGitUrl.name}/master/`);
-} else {
-    console.log(`=> Storybook deployed to: https://${parsedGitUrl.owner}.github.io/${parsedGitUrl.name}/${tempOutputDir}/`);
-}
+// // Cleanup temporary file
+// shell.cd('..');
+// // shell.rm('-rf', ghMergeDir);
+// // shell.rm('-rf', tempOutputDir);
+// if (sourceBranch === 'master') {
+//     console.log(`=> Storybook deployed to: https://${parsedGitUrl.owner}.github.io/${parsedGitUrl.name}/master/`);
+// } else {
+//     console.log(`=> Storybook deployed to: https://${parsedGitUrl.owner}.github.io/${parsedGitUrl.name}/${tempOutputDir}/`);
+// }
