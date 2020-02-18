@@ -41,7 +41,10 @@ shell.mkdir(ghMergeDir);
 // Go to the temporary directory and create a *new* Git repo
 shell.cd(ghMergeDir);
 shell.exec('git init');
-
+console.log('===============');
+console.log(`git config user.name ${defaultConfig.gitUsername}`);
+console.log(`git config user.email ${defaultConfig.gitEmail}`);
+console.log('===============');
 // Inside this git repo we'll pretend to be a new user
 shell.exec(`git config user.name ${defaultConfig.gitUsername}`);
 shell.exec(`git config user.email ${defaultConfig.gitEmail}`);
