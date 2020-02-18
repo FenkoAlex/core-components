@@ -10,14 +10,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    # - name: Install dependencies
-    #   run: yarn
-    # - name: Run lint
-    #   run: yarn lint
-    # - name: Run test
-    #   run: yarn test
     - name: Install dependencies
-      run: yarn add shelljs
+      run: yarn
+    - name: Run lint
+      run: yarn lint
+    - name: Run test
+      run: yarn test
     - name: Prepare git
       run: |
         touch ./id_rsa
@@ -27,6 +25,14 @@ jobs:
         ssh-add ./id_rsa
     - name: run demo build
       run: node ./bin/demo-build.js
+    -name: Publish storybook
+      run: |
+        cd ./storybook-demo
+        git push "https://alfa-bot:${{ secrets.BOT_AUTH_TOKEN }}@github.com/core-components.git" gh-pages
     - name: Echo ls
       run: |
         ls
+    - name: Cleanup work dir
+      run: |
+        cd ../
+        rm -rf storybook-demo

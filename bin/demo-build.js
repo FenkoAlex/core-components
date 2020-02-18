@@ -72,12 +72,12 @@ shell.exec(`git commit -m "${defaultConfig.commitMessage}"`, execOptions);
 // console.log(`=> Push changes to ${defaultConfig.targetBranch}`);
 // shell.exec(`git push -q -f ${gitUrl} master:${defaultConfig.targetBranch}`);
 
-// // Cleanup temporary file
-// shell.cd('..');
+// Cleanup temporary file
+shell.cd('..');
 // // shell.rm('-rf', ghMergeDir);
-// // shell.rm('-rf', tempOutputDir);
-// if (sourceBranch === 'master') {
-//     console.log(`=> Storybook deployed to: https://${parsedGitUrl.owner}.github.io/${parsedGitUrl.name}/master/`);
-// } else {
-//     console.log(`=> Storybook deployed to: https://${parsedGitUrl.owner}.github.io/${parsedGitUrl.name}/${tempOutputDir}/`);
-// }
+shell.rm('-rf', tempOutputDir);
+if (sourceBranch === 'master') {
+    console.log(`=> Storybook deployed to: https://${parsedGitUrl.owner}.github.io/${parsedGitUrl.name}/master/`);
+} else {
+    console.log(`=> Storybook deployed to: https://${parsedGitUrl.owner}.github.io/${parsedGitUrl.name}/${tempOutputDir}/`);
+}
