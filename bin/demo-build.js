@@ -4,7 +4,7 @@ const parseGitUrl = require('git-url-parse');
 
 /** Config for github */
 const defaultConfig = {
-    gitUsername: 'alfa-bot',
+    gitUsername: 'alfabot',
     gitEmail: 'ds@alfabank.ru',
     commitMessage: 'Deploy Storybook to GitHub Pages',
     gitRemote: 'origin',
