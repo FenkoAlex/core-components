@@ -28,7 +28,7 @@ jobs:
     - name: Publish storybook
       run: |
         cd ./storybook-demo
-        git push "https://alfa-bot:${{ secrets.BOT_AUTH_TOKEN }}@github.com/core-components.git" gh-pages
+        git push -q -f "https://alfa-bot:${{ secrets.BOT_AUTH_TOKEN }}@github.com/core-components.git" master:gh-pages
     - name: Echo ls
       run: |
         ls
