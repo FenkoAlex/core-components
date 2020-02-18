@@ -19,6 +19,14 @@ jobs:
     # - name: Run test
     #   run: yarn test
 
+    # - name: Prepare git
+    #   run: |
+    #     touch ./id_rsa
+    #     chmod 700 ./id_rsa
+    #     echo "${{ secrets.BOT_SSH_KEY }}" > id_rsa
+    #     eval $(ssh-agent -s)
+    #     ssh-add ./id_rsa
+
     - name: Run build
       run: node ./bin/demo-build.js
 
