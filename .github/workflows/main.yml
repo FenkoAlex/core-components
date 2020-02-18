@@ -12,10 +12,13 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: yarn
+
     - name: Run lint
       run: yarn lint
+
     # - name: Run test
     #   run: yarn test
+
     # - name: Prepare git
     #   run: |
     #     touch ./id_rsa
@@ -23,8 +26,10 @@ jobs:
     #     echo "${{ secrets.BOT_SSH_KEY }}" > id_rsa
     #     eval $(ssh-agent -s)
     #     ssh-add ./id_rsa
+
     - name: Run build
       run: node ./bin/demo-build.js
+
     - name: Publish storybook
       run: |
         cd ./storybook-demo
