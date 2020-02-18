@@ -14,15 +14,15 @@ jobs:
       run: yarn
     - name: Run lint
       run: yarn lint
-    - name: Run test
-      run: yarn test
-    - name: Prepare git
-      run: |
-        touch ./id_rsa
-        chmod 700 ./id_rsa
-        echo "${{ secrets.BOT_SSH_KEY }}" > id_rsa
-        eval $(ssh-agent -s)
-        ssh-add ./id_rsa
+    # - name: Run test
+    #   run: yarn test
+    # - name: Prepare git
+    #   run: |
+    #     touch ./id_rsa
+    #     chmod 700 ./id_rsa
+    #     echo "${{ secrets.BOT_SSH_KEY }}" > id_rsa
+    #     eval $(ssh-agent -s)
+    #     ssh-add ./id_rsa
     - name: run demo build
       run: node ./bin/demo-build.js
     - name: Publish storybook

@@ -19,7 +19,6 @@
     "lint": "yarn lint:css && yarn lint:js",
     "lint:css": "stylelint ./packages/**/*.css",
     "lint:js": "eslint ./ --ext .ts,.tsx,.js,.jsx",
-    "test": "yarn lint"
   },
   "browserslist": {
     "production": [
