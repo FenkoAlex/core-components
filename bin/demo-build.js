@@ -46,8 +46,8 @@ console.log(`git config user.name ${defaultConfig.gitUsername}`);
 console.log(`git config user.email ${defaultConfig.gitEmail}`);
 console.log('===============');
 // Inside this git repo we'll pretend to be a new user
-shell.exec(`git config user.name ${defaultConfig.gitUsername}`);
-shell.exec(`git config user.email ${defaultConfig.gitEmail}`);
+shell.exec(`git config user.name "${defaultConfig.gitUsername}"`);
+shell.exec(`git config user.email "${defaultConfig.gitEmail}"`);
 
 // Disable GPG signing
 shell.exec('git config commit.gpgsign false', execOptions);
