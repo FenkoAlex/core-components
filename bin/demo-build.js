@@ -40,11 +40,11 @@ shell.mkdir(ghMergeDir);
 
 // Go to the temporary directory and create a *new* Git repo
 shell.cd(ghMergeDir);
-shell.exec('git init', execOptions);
+shell.exec('git init');
 
 // Inside this git repo we'll pretend to be a new user
-shell.exec(`git config user.name ${defaultConfig.gitUsername}`, execOptions);
-shell.exec(`git config user.email ${defaultConfig.gitEmail}`, execOptions);
+shell.exec(`git config user.name ${defaultConfig.gitUsername}`);
+shell.exec(`git config user.email ${defaultConfig.gitEmail}`);
 
 // Disable GPG signing
 shell.exec('git config commit.gpgsign false', execOptions);
@@ -56,9 +56,6 @@ shell.exec(`git pull -f -q ${gitUrl} ${defaultConfig.targetBranch}`, execOptions
 // Merge builded storybook
 console.log('=> Merge builded storybook');
 shell.cd('../');
-console.log('=============');
-console.log(sourceBranch);
-console.log('=============');
 if (sourceBranch === 'master') {
     shell.cp('-rf', `./${tempOutputDir}`, `./${ghMergeDir}/master`);
 } else {
