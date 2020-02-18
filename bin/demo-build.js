@@ -10,7 +10,7 @@ const defaultConfig = {
     gitRemote: 'origin',
     targetBranch: 'gh-pages'
 };
-/** dir for merged storybook file */
+/** Dir for merged storybook file */
 const ghMergeDir = 'storybook-demo';
 /** Custom option for shell.exec */
 const execOptions = {
@@ -26,7 +26,7 @@ const gitUrl = shell.exec(
     `git config --get remote.${defaultConfig.gitRemote}.url`,
     execOptions
 ).stdout.trim();
-/** Parseg git url */
+/** Parsed git url */
 const parsedGitUrl = parseGitUrl(gitUrl);
 
 console.log('Publish storybook demo for github');
@@ -48,7 +48,7 @@ shell.exec(`git config user.email "${defaultConfig.gitEmail}"`);
 // Disable GPG signing
 shell.exec('git config commit.gpgsign false', execOptions);
 
-// // Pull gh-page file
+// Pull gh-page file
 console.log('=> Pull storybook file');
 shell.exec(`git pull -f -q ${gitUrl} ${defaultConfig.targetBranch}`, execOptions);
 
