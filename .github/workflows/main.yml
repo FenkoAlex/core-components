@@ -10,7 +10,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: check env
-      run: |
-        node -v
-        yarn -v
+    - name: run lint
+      run: yarn lint
+    - name: run test
+      run: yarn test
+    # - name: run demo build
+    #   run: node ./bin/scripts/demo.js

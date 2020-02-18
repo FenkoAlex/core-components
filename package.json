@@ -13,7 +13,7 @@
   "scripts": {
     "build": "./bin/build.sh",
     "start": "start-storybook -p 9009 -c .storybook",
-    "storybook:build-demo": "node ./demo/build.js",
+    "storybook:build-demo": "node ./bin/demo-build.js",
     "update-colors": "node ./tools/update-colors.js",
     "pub": "./bin/publish.sh",
     "lint": "yarn lint:css && yarn lint:js",
