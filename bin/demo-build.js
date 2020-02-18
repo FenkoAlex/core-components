@@ -40,10 +40,10 @@ shell.mkdir(ghMergeDir);
 
 // Go to the temporary directory and create a *new* Git repo
 shell.cd(ghMergeDir);
-shell.exec('git init');
+shell.exec('git init', execOptions);
 // Inside this git repo we'll pretend to be a new user
-shell.exec(`git config user.name "${defaultConfig.gitUsername}"`);
-shell.exec(`git config user.email "${defaultConfig.gitEmail}"`);
+shell.exec(`git config user.name "${defaultConfig.gitUsername}"`, execOptions);
+shell.exec(`git config user.email "${defaultConfig.gitEmail}"`, execOptions);
 
 // Disable GPG signing
 shell.exec('git config commit.gpgsign false', execOptions);
