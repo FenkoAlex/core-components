@@ -39,7 +39,7 @@ export const ButtonStory = () => (
         dataTestId={ text('dataTestId', '') }
         onClick={ action('click') }
     >
-        { text('Label', 'Оплатить') }
+        { text('Label', 'test') }
     </Button>
 );
 
