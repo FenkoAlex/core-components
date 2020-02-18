@@ -14,7 +14,8 @@ const defaultConfig = {
 const ghMergeDir = 'storybook-demo';
 /** Custom option for shell.exec */
 const execOptions = {
-    silent: true
+    silent: true,
+    fatal: true
 };
 /** Temporary dir for builded file = last git commit hash */
 const tempOutputDir = shell.exec('git rev-parse HEAD', execOptions).stdout;
@@ -30,7 +31,7 @@ const parsedGitUrl = parseGitUrl(gitUrl);
 
 console.log('Publish storybook demo for github');
 console.log('=> Build storybook');
-shell.exec(`build-storybook -o ${tempOutputDir}`);
+shell.exec(`build-storybook -o ${tempOutputDir}`, { fatal: true });
 
 // Prepare temporary gh-pages dir
 console.log('=> Prepare temporary dir');
