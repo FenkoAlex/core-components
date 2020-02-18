@@ -29,5 +29,4 @@ jobs:
       run: node ./bin/demo-build.js
     - name: Echo ls
       run: |
-        cd ./bin
         ls
