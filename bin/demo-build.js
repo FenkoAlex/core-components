@@ -31,7 +31,7 @@ const parsedGitUrl = parseGitUrl(gitUrl);
 
 console.log('Publish storybook demo for github');
 console.log('=> Build storybook');
-shell.exec(`build-storybook -o ${tempOutputDir}`, { fatal: true });
+shell.exec(`yarn build-storybook -o ${tempOutputDir}`, { fatal: true });
 
 // Prepare temporary gh-pages dir
 console.log('=> Prepare temporary dir');
@@ -56,6 +56,9 @@ shell.exec(`git pull -f -q ${gitUrl} ${defaultConfig.targetBranch}`, execOptions
 // Merge builded storybook
 console.log('=> Merge builded storybook');
 shell.cd('../');
+console.log('=============');
+console.log(sourceBranch);
+console.log('=============');
 if (sourceBranch === 'master') {
     shell.cp('-rf', `./${tempOutputDir}`, `./${ghMergeDir}/master`);
 } else {
