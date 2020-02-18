@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const shell = require('shelljs');
-// const parseGitUrl = require('git-url-parse');
+const parseGitUrl = require('git-url-parse');
 
 /** Config for github */
 const defaultConfig = {
@@ -27,7 +27,7 @@ const gitUrl = shell.exec(
     execOptions
 ).stdout.trim();
 /** Parseg git url */
-// const parsedGitUrl = parseGitUrl(gitUrl);
+const parsedGitUrl = parseGitUrl(gitUrl);
 
 console.log('Publish storybook demo for github');
 console.log('=> Build storybook');
