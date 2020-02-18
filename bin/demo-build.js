@@ -57,7 +57,7 @@ console.log('=> Merge builded storybook');
 shell.cd('../');
 console.log('=============');
 shell.exec('ls');
-console(`./${tempOutputDir}`, `./${ghMergeDir}`);
+console.log(`./${tempOutputDir}`, `./${ghMergeDir}`);
 console.log('=============');
 if (sourceBranch === 'master') {
     shell.cp('-rf', `./${tempOutputDir}`, `./${ghMergeDir}/master`);
