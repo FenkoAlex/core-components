@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const shell = require('shelljs');
-const parseGitUrl = require('git-url-parse');
+// const parseGitUrl = require('git-url-parse');
 
 /** Config for github */
 const defaultConfig = {
