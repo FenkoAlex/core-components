@@ -16,6 +16,8 @@ jobs:
     #   run: yarn lint
     # - name: Run test
     #   run: yarn test
+    - name: Install dependencies
+      run: yarn add shelljs
     - name: Prepare git
       run: |
         touch ./id_rsa
