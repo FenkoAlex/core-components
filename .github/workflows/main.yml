@@ -19,7 +19,7 @@ jobs:
           gitRemote: ${{ 'origin' }}
           targetBranch: ${{ 'gh-pages' }}
           ghMergeDir: ${{ 'storybook-demo' }}
-          tempOutputDir: ${{ GITHUB_CONTEXT.sha }}
+          tempOutputDir: GITHUB_CONTEXT.sha
           sourceBranch: ${{ git rev-parse --abbrev-ref HEAD }}
         run: |
           echo ${{ targetBranch }}
