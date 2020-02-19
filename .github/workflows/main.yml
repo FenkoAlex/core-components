@@ -10,31 +10,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Define vars
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-          gitUsername: ${{ 'alfa-bot' }}
-          gitEmail: ${{ 'ds@alfabank.ru' }}
-          commitMessage: ${{ 'Deploy Storybook to GitHub Pages' }}
-          gitRemote: ${{ 'origin' }}
-          targetBranch: ${{ 'gh-pages' }}
-          ghMergeDir: ${{ 'storybook-demo' }}
-          tempOutputDir: GITHUB_CONTEXT.sha
-          sourceBranch: { git rev-parse --abbrev-ref HEAD }
-        run: |
-          echo ${{ targetBranch }}
-          echo ${{ tempOutputDir }}
-          echo ${{ sourceBranch }}
-      - name: Dump env
-        run: |
-          echo ${{ targetBranch }}
-          echo ${{ tempOutputDir }}
-          echo ${{ sourceBranch }}
-    # - name: Install dependencies
-    #   run: yarn
+    - name: Install dependencies
+      run: yarn
 
-    # - name: Run lint
-    #   run: yarn lint
+    - name: Run lint
+      run: yarn lint
 
     # - name: Run test
     #   run: yarn test
@@ -47,10 +27,14 @@ jobs:
     #     eval $(ssh-agent -s)
     #     ssh-add ./id_rsa
 
-    # - name: Run build
-    #   run: node ./bin/demo-build.js
+    - name: Run build
+      run: node ./bin/demo-build.js
 
-    # - name: Publish storybook
-    #   run: |
-    #     cd ./storybook-demo
-    #     git push -q -f "https://alfa-bot:${{ secrets.BOT_AUTH_TOKEN }}@github.com/FenkoAlex/core-components.git" master:gh-pages
+    - name: Publish storybook
+      run: |
+        cd ./storybook-demo
+        git push -q -f "https://alfa-bot:${{ secrets.BOT_AUTH_TOKEN }}@github.com/FenkoAlex/core-components.git" master:gh-pages
+
+    - name: Storybook deployed to
+    run: |
+      echo ${{ steps.step_one.outputs.gitPagesUrl }}
