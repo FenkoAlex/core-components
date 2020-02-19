@@ -60,9 +60,9 @@ try {
     console.log('=> Merge builded storybook');
     shell.cd('../');
     if (sourceBranch === 'master') {
-        shell.cp('-rf', `./${tempOutputDir}`, `./${ghMergeDir}/master`);
+        shell.exec(`cp -rf ./${tempOutputDir} ./${ghMergeDir}/master`, execOptions);
     } else {
-        shell.cp('-rf', `./${tempOutputDir}`, `./${ghMergeDir}`);
+        shell.exec(`cp -rf ./${tempOutputDir} ./${ghMergeDir}`, execOptions);
     }
     shell.cd(ghMergeDir);
 
