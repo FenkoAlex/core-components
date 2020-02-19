@@ -10,16 +10,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-          gitUsername: ${{ 'alfa-bot' }}
-          gitEmail: ${{ 'ds@alfabank.ru' }}
-          commitMessage: ${{ 'Deploy Storybook to GitHub Pages' }}
-          gitRemote: ${{ 'origin' }}
-          targetBranch: ${{ 'gh-pages' }}
-          ghMergeDir: ${{ 'storybook-demo' }}
-          tempOutputDir: ${{ GITHUB_CONTEXT.sha }}
-          sourceBranch: ${{ git rev-parse --abbrev-ref HEAD }}
+      - name: Define vars
+        - env:
+            GITHUB_CONTEXT: ${{ toJson(github) }}
+            gitUsername: ${{ 'alfa-bot' }}
+            gitEmail: ${{ 'ds@alfabank.ru' }}
+            commitMessage: ${{ 'Deploy Storybook to GitHub Pages' }}
+            gitRemote: ${{ 'origin' }}
+            targetBranch: ${{ 'gh-pages' }}
+            ghMergeDir: ${{ 'storybook-demo' }}
+            tempOutputDir: ${{ GITHUB_CONTEXT.sha }}
+            sourceBranch: ${{ git rev-parse --abbrev-ref HEAD }}
       - name: Dump env
         run: |
           echo ${{ targetBranch }}
