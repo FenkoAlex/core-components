@@ -20,7 +20,7 @@ jobs:
           targetBranch: ${{ 'gh-pages' }}
           ghMergeDir: ${{ 'storybook-demo' }}
           tempOutputDir: GITHUB_CONTEXT.sha
-          sourceBranch: ${{ git rev-parse --abbrev-ref HEAD }}
+          sourceBranch: git rev-parse --abbrev-ref HEAD
         run: |
           echo ${{ targetBranch }}
           echo ${{ tempOutputDir }}
